@@ -1,0 +1,81 @@
+CREATE TABLE `tst1`.`persoane` (
+  `#p` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nume` VARCHAR(64) NOT NULL,
+  `id` VARCHAR(32) NOT NULL,
+  PRIMARY KEY (`#p`),
+  UNIQUE INDEX `#p_UNIQUE` (`#p` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+
+  select concat(21*floor(diff/21), '-', 21*floor(diff/21) + 20) as `range`,     count(*) as `number of users`
+  from new_table group by 1 
+  order by diff;
+  
+  create table new_table (user_number int, diff int)
+  
+  DELIMITER $$
+CREATE PROCEDURE my_procedure_Local_Variables()
+BEGIN   /* declare local variables */   
+DECLARE a INT DEFAULT 10;   
+DECLARE b, c INT;    /* using the local variables */   
+SET a = a + 100;   
+SET b = 2;   
+SET c = a + b;    
+BEGIN      /* local variable in nested block */      
+DECLARE c INT;             
+SET c = 5;       
+/* local variable c takes precedence over the one of the          
+same name declared in the enclosing block. */       
+SELECT a, b, c;   
+END;    
+SELECT a, b, c;
+END$$
+
+\s
+DELIMITER //
+
+ SELECT REGEXP_REPLACE('a b c', 'b', 'X');
+ mysql> SET @t1=1, @t2=2, @t3:=4;
+mysql> SELECT @t1, @t2, @t3, @t4 := @t1+@t2+@t3;
+
+SET @pos=0;
+SELECT @pos:=@pos+1,name FROM players ORDER BY score DESC;
+SELECT if(@a, @a:=@a+1, @a:=1)-1 as rownum
+
+MySQL
+
+The MySQL IFNULL() function lets you return an alternative value if an expression is NULL:
+
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products
+or we can use the COALESCE() function, like this:
+
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+FROM Products
+
+select name from employees where id not in (select managerId from employees where managerId is not null);
+
+select  userId, avg(duration) from 
+sessions
+group by userId
+having count(*)>1
+
+unique (roleId,userId),
+
+FOREIGN KEY(userId) REFERENCES users(id)
+
+CREATE TABLE users_roles (
+  userId INTEGER not null,
+  roleId INTEGER not null,
+  unique (roleId,userId),
+  FOREIGN KEY(userId) REFERENCES users(id),
+  foreign key(roleId) references roles(id)
+)
+
+SELECT C.ID, C.NAME, C.AGE, D.DEPT
+        FROM COMPANY AS C, DEPARTMENT AS D
+        WHERE  C.ID = D.EMP_ID;
+		
+select items.name i, sellers.name s 
+from sellers inner join items
+on sellers.id = items.sellerId
+where sellers.rating > 4
